@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+   margin-bottom: 0;
+}
+html, body{
+  height: 100%;
+  margin: 0;
+
+  background-color: #12ddc3;
+  font-family: sans-serif;
+
+}
+
+app-root{
+
+  display:block;
+  width:100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  background-color: #00ffdf;
+  min-height: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}

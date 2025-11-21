@@ -1,0 +1,5 @@
+<h2>{{ exerciseGroup.title}}</h2>
+
+@for (exercise of exerciseGroup.exercises; track exercise.title; let idx = $index;) {
+  <app-exercise [index]="idx" [exercise]="exercise"></app-exercise>
+}

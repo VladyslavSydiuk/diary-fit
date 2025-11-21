@@ -1,0 +1,23 @@
+<div class="exercise-card">
+
+  <div class="section title">
+    <h3>{{ exercise.title }}</h3>
+  </div>
+
+  <div class="section sets">
+    <span class="label">Sets</span>
+    <span class="value">{{exercise.sets}}</span>
+  </div>
+
+  <div class="section times">
+    <span class="label">Time</span>
+    <span class="value">{{exercise.times}}</span>
+  </div>
+
+  <div class="section action">
+    <button class="add-btn" (click)="onAdd()">+</button>
+  </div>
+
+</div>
+
+
