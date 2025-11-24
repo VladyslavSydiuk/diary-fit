@@ -13,7 +13,7 @@ export class ExerciseComponent {
   @Input() index!: number;
 
   onAdd() {
-    console.log('Button clicked for:', this.exercise.title);
+    console.log('Button clicked for:', this.exercise.id);
     // Тут буде логіка додавання
   }
 

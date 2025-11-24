@@ -1,4 +1,11 @@
-.main-content{
- margin: 0px 20px;
+.main-content {
+  display: flex;
+  align-content: center;
+  margin: 20px 20px;
+
+
+  justify-content: center; /* по горизонталі */
+  align-items: center; /* по вертикалі */
 
 }
+

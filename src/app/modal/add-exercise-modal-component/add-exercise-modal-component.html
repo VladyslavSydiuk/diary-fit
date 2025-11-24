@@ -1,0 +1,21 @@
+<app-modal-exercise [open]="open" (close)="cancel.emit()">
+  <h3>Add Exercise</h3>
+
+  <label>Choose existing</label>
+  <select [(ngModel)]="selectedId">
+    <option [ngValue]="null">— Select —</option>
+    @for( ex of existingExercises; track ex.id) {
+    <option [ngValue]="ex.id">{{ ex.title }}</option>
+    }
+  </select>
+
+  <div class="separator">or</div>
+
+  <label>Create new</label>
+  <input type="text" [(ngModel)]="newTitle" placeholder="Exercise name">
+
+  @if(open){
+    <button (click)="save()">Save</button>
+    <button (click)="cancel.emit()">Cancel</button>
+  }
+</app-modal-exercise>

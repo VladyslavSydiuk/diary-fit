@@ -1,0 +1,34 @@
+<div class="today-container">
+  <h1> Today's Diary </h1>
+
+
+  <!-- CHECK IF EMPTY -->
+
+  @if (exercises().length === 0) {
+    <div class="empty-state">
+      <p>No exercises yet today</p>
+      <button class="big-add-btn" (click)="openAdd()">
+        Start Workout
+
+      </button>
+    </div>
+  } @else {
+    <!-- IF NOT EMPTY -->
+    <div class="exercise-list">
+      @for (exercise of exercises(); track exercise.id){
+        <app-exercise [exercise]="exercise"></app-exercise>
+      }
+    </div>
+
+    <button class="small-add-btn" (click)="openAdd()">+</button>
+  }
+
+
+  <app-add-exercise-modal-component
+    [open]="showModal()"
+    [existingExercises]="exercises()"
+    (cancel)="closeAdd()"
+    (create)="onCreateNew($event)"
+    (chooseExisting)="onChooseExisting($event)"
+  ></app-add-exercise-modal-component>
+</div>

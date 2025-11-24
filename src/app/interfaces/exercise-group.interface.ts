@@ -11,5 +11,6 @@ export interface Exercise {
   title: string;
   sets: number;
   times: number;
+  createdAt: number;
 
 }

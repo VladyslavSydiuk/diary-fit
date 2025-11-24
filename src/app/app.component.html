@@ -6,8 +6,11 @@
 
 <main>
   <div class="main-content">
-  @for (exerciseGroup of exerciseGroups; track exerciseGroup.title; let idx = $index) {
-    <app-exercise-group [exerciseGroup]="exerciseGroup"></app-exercise-group>
-  }
+<!--  @for (exerciseGroup of exerciseGroups; track exerciseGroup.title; let idx = $index) {-->
+<!--    <app-exercise-group [exerciseGroup]="exerciseGroup"></app-exercise-group>-->
+<!--  }-->
+
+    <app-today-page></app-today-page>
+<!--    <app-exercise></app-exercise>-->
   </div>
 </main>
