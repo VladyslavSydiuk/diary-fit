@@ -9,7 +9,7 @@ import {ExerciseComponent} from './components/exercise/exercise.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [CommonModule, ExerciseGroupComponent, TodayPage],
+  imports: [CommonModule, TodayPage],
   styleUrl: './app.component.css'
 })
 export class AppComponent {

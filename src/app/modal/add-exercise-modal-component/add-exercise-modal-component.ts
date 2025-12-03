@@ -1,38 +1,57 @@
-import {Component, EventEmitter, Input, Output, signal} from '@angular/core';
+import {Component, EventEmitter, inject, Inject, Input, OnInit, Output, signal} from '@angular/core';
 import {Exercise} from '../../interfaces/exercise-group.interface';
-import {ModalExercise} from '../modal-exercise/modal-exercise';
 import {FormsModule} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+
+import {ExerciseService} from '../../services/trigger-request';
 
 @Component({
   selector: 'app-add-exercise-modal-component',
   imports: [
-    ModalExercise,
     FormsModule
   ],
   templateUrl: './add-exercise-modal-component.html',
   styleUrl: './add-exercise-modal-component.css',
 })
-export class AddExerciseModalComponent {
+export class AddExerciseModalComponent implements OnInit {
 
-  @Input() open = false;
-  @Input() existingExercises: Exercise[] = [];
+  private readonly matDialogRefService = inject(MatDialogRef);
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Exercise[]) {
+  }
 
-  @Output() cancel = new EventEmitter<void>();
-  @Output() create = new EventEmitter<{ title: string }>();
-  @Output() chooseExisting = new EventEmitter<Exercise>();
+  public closeModal(){
+    this.matDialogRefService.close();
+  }
+  private exerciseService = inject(ExerciseService);
+  ngOnInit(): void {
+    console.log(this.data)
+        this.existingExercises = this.data
+    }
+
+
+  public existingExercises: Exercise[] = [];
+
 
   selectedId = signal<number | null>(null);
   newTitle = signal('');
+  newTitleError = signal('');
 
-  save() {
-    if (this.selectedId()) {
-      const ex = this.existingExercises.find(e => e.id === this.selectedId());
-      if (ex) this.chooseExisting.emit(ex);
+  async save() {
+    if(!this.newTitle()){
+      this.newTitleError.set('Ty sho kazel')
       return;
+    }else{
+      await this.exerciseService.add({
+        title: this.newTitle(),
+        sets: 0,
+        times: 0,
+        createdAt: Date.now()
+      });
+      await this.exerciseService.getAll()
+
+      this.matDialogRefService.close();
     }
 
-    if (this.newTitle().trim()) {
-      this.create.emit({ title: this.newTitle().trim() });
-    }
+
   }
 }

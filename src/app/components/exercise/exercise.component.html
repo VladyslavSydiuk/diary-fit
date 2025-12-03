@@ -6,16 +6,19 @@
 
   <div class="section sets">
     <span class="label">Sets</span>
-    <span class="value">{{exercise.sets}}</span>
+    <span class="value">{{ exercise.sets }}</span>
   </div>
 
   <div class="section times">
     <span class="label">Time</span>
-    <span class="value">{{exercise.times}}</span>
+    <span class="value">{{ exercise.times }}</span>
   </div>
 
   <div class="section action">
     <button class="add-btn" (click)="onAdd()">+</button>
+  </div>
+  <div class="section action">
+    <button class="add-btn" (click)="openModalDelete()">Delete</button>
   </div>
 
 </div>

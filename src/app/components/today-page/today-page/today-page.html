@@ -23,12 +23,4 @@
     <button class="small-add-btn" (click)="openAdd()">+</button>
   }
 
-
-  <app-add-exercise-modal-component
-    [open]="showModal()"
-    [existingExercises]="exercises()"
-    (cancel)="closeAdd()"
-    (create)="onCreateNew($event)"
-    (chooseExisting)="onChooseExisting($event)"
-  ></app-add-exercise-modal-component>
 </div>

@@ -1,4 +1,4 @@
-<app-modal-exercise [open]="open" (close)="cancel.emit()">
+<div class="my-custom-dialog">
   <h3>Add Exercise</h3>
 
   <label>Choose existing</label>
@@ -13,9 +13,15 @@
 
   <label>Create new</label>
   <input type="text" [(ngModel)]="newTitle" placeholder="Exercise name">
+  @if (newTitleError()) {
+    <div class="error">
+      {{newTitleError()}}
+    </div>
 
-  @if(open){
-    <button (click)="save()">Save</button>
-    <button (click)="cancel.emit()">Cancel</button>
   }
-</app-modal-exercise>
+
+    <button (click)="save()">Save</button>
+    <button (click)="closeModal()">Cancel</button>
+
+</div>
+
